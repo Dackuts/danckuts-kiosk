@@ -1,0 +1,63 @@
+.container {
+  padding: 4rem;
+  overflow: hidden;
+}
+
+.heading {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0.5rem 0;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.phone-input {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 4rem 0;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.grid-button {
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  font-size: 32px;
+  font-family: inherit;
+  padding: 8px 0;
+  color: var(--text-color-2);
+  cursor: pointer;
+}
+
+.grid-button.submit {
+  background-color: var(--color-primary-500);
+  color: var(--background);
+}
+
+.dependent-container {
+  margin-top: 3rem;
+}
+
+.dependent-selector {
+  border: 1px solid var(--border);
+  margin: 1rem 0;
+  padding: 1.5rem 2rem;
+  border-radius: 15px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.dependent-selector:hover {
+  border-color: var(--color-primary-300);
+  background-color: var(--color-primary-100);
+}

@@ -1,0 +1,41 @@
+.container {
+  padding: 4rem;
+  overflow: hidden;
+}
+
+.heading {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0.5rem 0;
+}
+
+.location-container {
+  margin-top: 3rem;
+}
+
+.location-selector {
+  border: 1px solid var(--border);
+  margin: 1rem 0;
+  padding: 1.5rem 2rem;
+  border-radius: 15px;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: default;
+}
+
+.location-selector > p {
+  margin: 0 1rem;
+}
+
+.location-address {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-color-2)
+}
+
+.location-selector:hover {
+  border-color: var(--color-primary-300);
+  background-color: var(--color-primary-100);
+}
