@@ -143,7 +143,7 @@ export default function NewUserPopup({phone, nextStep}) {
                     lastName,
                   });
                   setLoading(false);
-                  nextStep();
+                  nextStep(phoneNumber);
                 }}
               >
                 CREATE
