@@ -1,15 +1,16 @@
 import styles from "./Input.module.css";
 
-export default function Input({ label, value, onChange }) {
+export default function Input({ placeholder, value, onChange, icon, style }) {
   return (
-    <div className={styles["input-container"]}>
+    <div className={styles["input-container"]} style={style}>
+      <div className={styles["icon-container"]}>{icon}</div>
       <input
+        className={styles["input"]}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        required
+        placeholder={placeholder}
         type="text"
       />
-      <label className="noselect">{label}</label>
     </div>
   );
 }

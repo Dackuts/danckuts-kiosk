@@ -19,11 +19,11 @@ export default function App() {
 
   function setLocation(location) {
     setLocationState(location);
-    sessionStorage.setItem("location", location);
+    localStorage.setItem("location", location);
   }
 
   useEffect(() => {
-    setLocationState(sessionStorage.getItem("location"));
+    setLocationState(localStorage.getItem("location"));
   }, []);
 
   return (

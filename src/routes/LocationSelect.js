@@ -18,7 +18,7 @@ export default function LocationSelect({ setLocation }) {
   return (
     <div className={styles.container}>
       <p className={styles.heading}>
-        Please select the correct profile to log in with.
+        Please select the correct location
       </p>
       <div className={styles["location-container"]}>
         {locations.map((loc) => (

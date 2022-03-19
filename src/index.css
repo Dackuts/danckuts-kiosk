@@ -33,12 +33,6 @@ body {
   justify-content: center;
 }
 
-@media only screen and (max-width: 1200px) {
-  body {
-    display: initial;
-  }
-}
-
 .loading-container {
   display: flex;
   justify-content: center;
@@ -52,21 +46,11 @@ body {
   height: 100%;
 }
 
-.noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
-}
-
 .card {
   background-color: var(--background);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 2px 2px rgba(0, 0, 0, 0.24);
   border-radius: 15px;
-  overflow-y: scroll;
+  overflow-y: hidden;
   overflow-x: hidden;
   scrollbar-color: var(--color-primary-500) var(--transparent);
 }

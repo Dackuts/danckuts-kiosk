@@ -48,6 +48,7 @@ export default function CheckIn({ profile, location }) {
 
   function finish() {
     clearInterval(timer);
+    //* disable this to prevent logout
     sessionStorage.clear("token");
     // eslint-disable-next-line no-restricted-globals
     window.location.reload();
