@@ -52,31 +52,6 @@ export default function App() {
               </InfoCheck>
             }
           />
-          {/* <Route
-            path="/onboarding"
-            element={<SelectAppointment />}
-          /> */}
-          {/* <Route
-            path="/onboarding-dependents"
-            element={<SelectAppointment />}
-          /> */}
-          {/* <Route
-            path="/onboarding-dependent"
-            element={<SelectAppointment />}
-          /> */}
-          {/* <Route
-            path="/appointment-list"
-            element={
-              <InfoCheck
-                name={name}
-                setName={setName}
-                token={token}
-                setToken={setToken}
-              >
-                <AppointmentList locations={locations} />
-              </InfoCheck>
-            }
-          /> */}
         </Routes>
       </Router>
       <span className={styles.location}>{location}</span>

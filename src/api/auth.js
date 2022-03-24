@@ -35,3 +35,7 @@ export function postCreateAccount(user) {
 export function postCreateDependent(firstname, lastname) {
   return api.post(`${BASE_URL}/create-dependent`, { firstname, lastname });
 }
+
+export function unsafeLogin(phone) {
+  return api.post(`${BASE_URL}/unsafe-get-user`, { phone });
+}

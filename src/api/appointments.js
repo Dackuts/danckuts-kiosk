@@ -20,3 +20,7 @@ export function postCreateAppointment({ location, time }) {
 export function postRescheduleAppointment({ appointmentId, location, time }) {
   return api.post(`${BASE_URL}/reschedule`, { appointmentId, location, time });
 }
+
+export function postCheckIn(appointmentId) {
+  return api.post(`${BASE_URL}/check-in`, { appointmentId });
+}

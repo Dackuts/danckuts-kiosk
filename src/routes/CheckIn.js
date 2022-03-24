@@ -1,6 +1,6 @@
 import styles from "./CheckIn.module.css";
 import { useState, useEffect } from "react";
-import { getAppointments } from "../api/appointments";
+import { getAppointments, postCheckIn } from "../api/appointments";
 import Spinner from "../components/Spinner";
 import { DateTime } from "luxon";
 import Cheers from "../assets/cheers.png";
@@ -18,21 +18,17 @@ export default function CheckIn({ profile, location }) {
   useEffect(() => {
     async function fetchData() {
       const { future } = await getAppointments();
-      // setAppointments([
-      //   {
-      //     id: "31886888-54c1-4291-bc2d-c4bcd7bc2d0c",
-      //     location: "Danckuts / Irvine 01",
-      //     date: "2022-03-12T22:00:00.000Z",
-      //     type: "hairKut",
-      //     checkedIn: true,
-      //   },
-      // ]);
-      setAppointments(future);
+
+      const appointments = future.filter((a) =>
+        profile.id === "user" ? a.dependent == null : a.dependent === profile.id
+      );
+
+      setAppointments(appointments);
       setLoading(false);
       startTimer();
     }
     fetchData();
-  }, []);
+  }, [profile.id]);
 
   function startTimer() {
     setTimer(
@@ -129,7 +125,7 @@ export default function CheckIn({ profile, location }) {
               <div
                 className={styles.button}
                 onClick={() => {
-                  //TODO call check-in endpoint
+                  postCheckIn(appointments[0].id);
                   finish();
                 }}
               >
