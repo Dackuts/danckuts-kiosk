@@ -2,9 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import {
   getMe,
   postCheckPhoneNumber,
-  postCheckTextCode,
   postCreateDependent,
-  postSendTextCode,
   unsafeLogin,
 } from "../api/auth";
 import Spinner from "./Spinner";
@@ -62,9 +60,7 @@ export default function InfoCheck({
     setLoading(true);
     try {
       const userExists = await postCheckPhoneNumber({ phoneNumber: phone });
-      if (userExists) {
-        await postSendTextCode(phone);
-      } else {
+      if (!userExists) {
         setNewUser(true);
       }
       const { token } = await unsafeLogin(phone);
@@ -91,7 +87,6 @@ export default function InfoCheck({
         setPhone={setPhone}
         newUser={newUser}
         newUserNextStep={async (phoneNumber) => {
-          await postSendTextCode(phoneNumber);
           setNewUser(false);
         }}
         nextStep={handleRequestPhoneNextStep}
