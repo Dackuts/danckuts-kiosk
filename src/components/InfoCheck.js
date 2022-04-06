@@ -22,7 +22,6 @@ export default function InfoCheck({
   dependent,
 }) {
   const [phone, setPhone] = useState("");
-  const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [newUser, setNewUser] = useState(false);
   const [step, setStep] = useState(
