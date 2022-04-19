@@ -37,16 +37,16 @@ export default function InfoCheck({
     const { user } = await getMe();
     if (user) {
       setUser(user);
-      if (user.dependents.length === 0) {
-        setDependent("user");
-        setLoading(false);
-        return setStep("continue");
-      }
+      // if (user.dependents.length === 0) {
+      //   setDependent("user");
+      //   setLoading(false);
+      //   return setStep("continue");
+      // }
       setLoading(false);
       return setStep("requestCurrentDependent");
     }
     setLoading(false);
-  }, [setDependent, setUser]);
+  }, [setUser]);
 
   useEffect(() => {
     // eslint-disable-next-line eqeqeq
