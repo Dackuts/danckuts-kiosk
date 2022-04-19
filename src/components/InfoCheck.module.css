@@ -77,21 +77,30 @@
 }
 
 .add-dependent {
-  margin-top: 1rem;
-  border-color: var(--color-primary-500);
-  border-width: 5px;
-  color: var(--color-primary-500);
+  border: 2px solid var(--color-primary-300);
+  border-radius: 0.4rem;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  margin: 1rem auto;
+  padding: 1rem;
+  gap: 1.5rem;
+}
+
+.add-dependent span {
+  font-size: 1.6rem;
+  color: var(--color-primary-500)
 }
 
 .input-container {
   display: flex;
-  gap: 8rem;
+  flex: 999;
+  gap: 2rem;
   margin: 0 4rem;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .seperator {

@@ -4,6 +4,7 @@ import { getAppointments, postCheckIn } from "../api/appointments";
 import Spinner from "../components/Spinner";
 import { DateTime } from "luxon";
 import Cheers from "../assets/cheers.png";
+import Caution from "../assets/caution.png";
 import AlarmClock from "../assets/alarm-clock.png";
 import SchedulePopup from "../components/SchedulePopup";
 
@@ -130,6 +131,30 @@ export default function CheckIn({ profile, location }) {
                 }}
               >
                 CHECK-IN
+              </div>
+            </div>
+          </div>
+        ) : DateTime.now() >
+          DateTime.fromISO(appointments[0].date).minus({ minutes: 10 }) ? (
+          <div>
+            <div className={styles["image-container"]}>
+              <img className={styles.image} src={Caution} alt="caution" />
+            </div>
+            <p className={styles.name}>Hey {profile.first_name},</p>
+            <p className={styles.message}>
+              It's too late to check in to your{" "}
+              {DateTime.fromISO(appointments[0].date).toFormat("h:mm a")}{" "}
+              appointment. Please speak to the manager for assistance.
+            </p>
+            <div className={styles["button-container"]}>
+              <div
+                className={styles.button}
+                onClick={() => {
+                  postCheckIn(appointments[0].id);
+                  finish();
+                }}
+              >
+                DONE
               </div>
             </div>
           </div>

@@ -134,8 +134,8 @@ function SetCurrentDependent({ dependents, setDependent, nextStep, altStep }) {
       <div className={styles["add-dependent"]} onClick={altStep}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="21"
-          height="22"
+          width="24"
+          height="25"
           viewBox="0 0 21 22"
           fill="none"
         >
@@ -153,7 +153,7 @@ function SetCurrentDependent({ dependents, setDependent, nextStep, altStep }) {
             stroke-linecap="square"
           />
         </svg>
-        <span>Add Another</span>
+        <span>Add A Dependent</span>
       </div>
     </div>
   );
@@ -237,7 +237,7 @@ function AddDependent({ nextStep }) {
       </h1>
       <div className={styles["input-container"]}>
         <Input
-          style={{ width: "100%" }}
+          style={{ width: "50%" }}
           value={firstName}
           onChange={setFirstName}
           placeholder="First Name"
@@ -259,7 +259,7 @@ function AddDependent({ nextStep }) {
           }
         />
         <Input
-          style={{ width: "100%" }}
+          style={{ width: "50%" }}
           value={lastName}
           onChange={setlastName}
           placeholder="Last Name"
