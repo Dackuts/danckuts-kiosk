@@ -64,6 +64,7 @@ export default function CheckIn({ profile, location }) {
             setOpenScheduler(false);
             startTimer();
           }}
+          profile={profile}
           location={location}
         />
       )}
