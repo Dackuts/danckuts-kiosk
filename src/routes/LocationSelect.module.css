@@ -1,6 +1,8 @@
 .container {
   padding: 4rem;
   overflow: hidden;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .heading {
@@ -13,6 +15,9 @@
 
 .location-container {
   margin-top: 3rem;
+  overflow-y: auto;
+  max-height: calc(100% - 3rem);
+  box-sizing: border-box;
 }
 
 .location-selector {
@@ -32,7 +37,7 @@
 .location-address {
   font-size: 16px;
   font-weight: 500;
-  color: var(--text-color-2)
+  color: var(--text-color-2);
 }
 
 .location-selector:hover {

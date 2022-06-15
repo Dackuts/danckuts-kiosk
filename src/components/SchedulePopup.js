@@ -26,10 +26,13 @@ export default function SchedulePopup({ location, profile, close, success }) {
 
   if (seconds === 0) {
     clearInterval(timer);
-    if (state === "schedule") {
+    if (state === "success") {
+      console.log("test");
       success();
+    } else {
+      console.log("test2");
+      close();
     }
-    close();
   }
 
   function X() {
@@ -122,6 +125,9 @@ export default function SchedulePopup({ location, profile, close, success }) {
           <p className={styles["info-text"]}>
             this will close in {seconds} second{seconds === 1 ? "" : "s"}
           </p>
+          <button className={styles.button} onClick={success}>
+            DONE
+          </button>
         </div>
       );
     case "schedule":

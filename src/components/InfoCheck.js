@@ -37,11 +37,6 @@ export default function InfoCheck({
     const { user } = await getMe();
     if (user) {
       setUser(user);
-      // if (user.dependents.length === 0) {
-      //   setDependent("user");
-      //   setLoading(false);
-      //   return setStep("continue");
-      // }
       setLoading(false);
       return setStep("requestCurrentDependent");
     }
@@ -112,8 +107,38 @@ export default function InfoCheck({
 }
 
 function SetCurrentDependent({ dependents, setDependent, nextStep, altStep }) {
+  const [timer, setTimer] = useState(null);
+  const [seconds, setSeconds] = useState(15);
+
+  function startTimer() {
+    setTimer(
+      setInterval(() => {
+        setSeconds((n) => n - 1);
+      }, 1000)
+    );
+  }
+
+  useEffect(() => {
+    startTimer();
+  }, []);
+
+  if (seconds === 0) {
+    finish();
+  }
+
+  function finish() {
+    clearInterval(timer);
+    //* disable this to prevent logout
+    sessionStorage.clear("token");
+    // eslint-disable-next-line no-restricted-globals
+    window.location.reload();
+  }
+
   return (
     <div className={styles.container}>
+      <svg onClick={finish} width="12" height="17">
+        <path d="M10.8158 0.889582C11.1481 1.33071 11.0598 1.9577 10.6187 2.29L2.63108 8.3071L10.6414 14.7102C11.0728 15.055 11.143 15.6843 10.7981 16.1157C10.4533 16.5471 9.82405 16.6172 9.39265 16.2724L0.375802 9.06478C0.134464 8.87187 -0.00414848 8.57823 0.000289917 8.2693C0.00472927 7.96036 0.151721 7.67083 0.398501 7.48493L9.41535 0.692535C9.85647 0.360233 10.4835 0.448454 10.8158 0.889582Z" />
+      </svg>
       <p className={styles.heading}>
         Please select the correct profile to log in with.
       </p>
@@ -143,18 +168,21 @@ function SetCurrentDependent({ dependents, setDependent, nextStep, altStep }) {
           <path
             d="M5.61111 11H15.3889"
             stroke="#0084CA"
-            stroke-width="2"
-            stroke-linecap="square"
+            strokeWidth="2"
+            strokeLinecap="square"
           />
           <path
             d="M10.5 6V16"
             stroke="#0084CA"
-            stroke-width="2"
-            stroke-linecap="square"
+            strokeWidth="2"
+            strokeLinecap="square"
           />
         </svg>
         <span>Add A Dependent</span>
       </div>
+      <p className={styles.timer}>
+        this will close in {seconds} second{seconds === 1 ? "" : "s"}
+      </p>
     </div>
   );
 }

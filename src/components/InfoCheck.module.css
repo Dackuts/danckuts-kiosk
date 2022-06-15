@@ -90,7 +90,7 @@
 
 .add-dependent span {
   font-size: 1.6rem;
-  color: var(--color-primary-500)
+  color: var(--color-primary-500);
 }
 
 .input-container {
@@ -139,4 +139,16 @@
 .button:disabled {
   border-color: var(--border);
   background-color: var(--disabled-text);
+}
+
+.timer {
+  text-align: center;
+}
+
+.close {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  position: absolute;
+  top: 12px;
+  right: 12px;
 }

@@ -6,7 +6,7 @@
   left: calc(50% - var(--width) / 2);
   right: calc(50% - var(--width) / 2);
   top: 50%;
-  height: 45rem;
+  height: min(80%, 45rem);
   transform: translate(0%, -50%);
   padding: var(--padding);
   display: flex;

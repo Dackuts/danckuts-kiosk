@@ -24,7 +24,8 @@ export default function CheckIn({ profile, location }) {
         profile.id === "user" ? a.dependent == null : a.dependent === profile.id
       );
 
-      setAppointments(appointments);
+      // setAppointments(appointments);
+      setAppointments([]);
       setLoading(false);
       startTimer();
     }
@@ -119,7 +120,7 @@ export default function CheckIn({ profile, location }) {
             <p className={styles.name}>Hey {profile.first_name},</p>
             <p className={styles.message}>
               Welcome to your{" "}
-              {DateTime.fromISO(appointments[0].date).toFormat("h:mm a")}{" "}
+              {DateTime.fromISO(appointments[0].date).toFormat("h:mm a DD")}{" "}
               appointment! Help yourself to a complimentary drink, hangout & we
               will be with you shortly.
             </p>
@@ -144,7 +145,7 @@ export default function CheckIn({ profile, location }) {
             <p className={styles.name}>Hey {profile.first_name},</p>
             <p className={styles.message}>
               It's too late to check in to your{" "}
-              {DateTime.fromISO(appointments[0].date).toFormat("h:mm a")}{" "}
+              {DateTime.fromISO(appointments[0].date).toFormat("h:mm a DD")}{" "}
               appointment. Please speak to the manager for assistance.
             </p>
             <div className={styles["button-container"]}>
@@ -171,7 +172,7 @@ export default function CheckIn({ profile, location }) {
             <p className={styles.name}>Hey {profile.first_name},</p>
             <p className={styles.message}>
               You are too early to check in for your{" "}
-              {DateTime.fromISO(appointments[0].date).toFormat("h:mm a")}{" "}
+              {DateTime.fromISO(appointments[0].date).toFormat("h:mm a DD")}{" "}
               appointment. You cannot check in sooner than{" "}
               {DateTime.fromISO(appointments[0].date)
                 .minus({ minutes: 20 })
