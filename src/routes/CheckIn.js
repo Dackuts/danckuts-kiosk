@@ -24,8 +24,7 @@ export default function CheckIn({ profile, location }) {
         profile.id === "user" ? a.dependent == null : a.dependent === profile.id
       );
 
-      // setAppointments(appointments);
-      setAppointments([]);
+      setAppointments(appointments);
       setLoading(false);
       startTimer();
     }
