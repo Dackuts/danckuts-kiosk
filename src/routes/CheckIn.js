@@ -94,7 +94,7 @@ export default function CheckIn({ profile, location }) {
               </div>
             </div>
           </div>
-        ) : appointments[0].checkedIn ? (
+        ) : appointments[0].checkedin ? (
           <div>
             <div className={styles["image-container"]}>
               <img className={styles.image} src={Cheers} alt="cheers" />
