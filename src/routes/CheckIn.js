@@ -176,7 +176,7 @@ export default function CheckIn({ profile, location }) {
               {DateTime.fromISO(appointments[0].date)
                 .minus({ minutes: 20 })
                 .toFormat("h:mm a")}{" "}
-              . Enjoy a drnk, hang out and check back in soon!
+              . Enjoy a drink, hang out and check back in soon!
             </p>
             <div className={styles["button-container"]}>
               <div className={styles.button} onClick={finish}>
