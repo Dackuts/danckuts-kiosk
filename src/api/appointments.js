@@ -14,6 +14,7 @@ export function postCreateAppointment({ location, time }) {
   return api.post(`${BASE_URL}/schedule`, {
     location,
     time,
+    autoCheckIn: true,
   });
 }
 
