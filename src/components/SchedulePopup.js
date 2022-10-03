@@ -27,10 +27,8 @@ export default function SchedulePopup({ location, profile, close, success }) {
   if (seconds === 0) {
     clearInterval(timer);
     if (state === "success") {
-      console.log("test");
       success();
     } else {
-      console.log("test2");
       close();
     }
   }
@@ -77,7 +75,11 @@ export default function SchedulePopup({ location, profile, close, success }) {
                 });
                 setState("success");
               } catch (error) {
-                setError(error.message ?? JSON.stringify(error));
+                setError(
+                  error?.data?.payload?.message ??
+                    error.message ??
+                    JSON.stringify(error)
+                );
                 setState("error");
               }
             }}
