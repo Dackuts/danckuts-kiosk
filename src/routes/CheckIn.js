@@ -136,7 +136,11 @@ export default function CheckIn({ profile, location }) {
             </div>
           </div>
         ) : DateTime.now() >
-          DateTime.fromISO(appointments[0].date).minus({ minutes: 10 }) ? (
+            DateTime.fromISO(appointments[0].date).plus({ minutes: 10 }) &&
+          DateTime.now().hasSame(
+            DateTime.fromISO(appointments[0].date),
+            "day"
+          ) ? (
           <div>
             <div className={styles["image-container"]}>
               <img className={styles.image} src={Caution} alt="caution" />
