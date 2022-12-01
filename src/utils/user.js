@@ -2,7 +2,7 @@ import { isEmpty } from "lodash";
 
 export function getProfile(user, id) {
   if (user == null || isEmpty(user)) {
-      return null
+    return null
   }
   if (id === "user") {
     return {
@@ -13,6 +13,6 @@ export function getProfile(user, id) {
     };
   } else {
     const profile = user.dependents.find((d) => d.id === id);
-    return { name: `${profile?.first_name} ${profile?.last_name}`, ...profile };
+    return { name: `${profile?.first_name} ${profile?.last_name}`, isDependent: true, ...profile };
   }
 }

@@ -72,13 +72,14 @@ export default function SchedulePopup({ location, profile, close, success }) {
                 await postCreateAppointment({
                   location: location,
                   time: date,
+                  ...(profile?.isDependent && { dependent: profile?.id }),
                 });
                 setState("success");
               } catch (error) {
                 setError(
                   error?.data?.payload?.message ??
-                    error.message ??
-                    JSON.stringify(error)
+                  error.message ??
+                  JSON.stringify(error)
                 );
                 setState("error");
               }
