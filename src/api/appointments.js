@@ -22,6 +22,6 @@ export function postRescheduleAppointment({ appointmentId, location, time }) {
   return api.post(`${BASE_URL}/reschedule`, { appointmentId, location, time });
 }
 
-export function postCheckIn(appointmentId) {
-  return api.post(`${BASE_URL}/check-in`, { appointmentId });
+export async function postCheckIn(appointmentId) {
+  return await api.post(`${BASE_URL}/check-in`, { appointmentId });
 }

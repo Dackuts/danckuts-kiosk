@@ -126,8 +126,8 @@ export default function CheckIn({ profile, location }) {
             <div className={styles["button-container"]}>
               <div
                 className={styles.button}
-                onClick={() => {
-                  postCheckIn(appointments[0].id);
+                onClick={async () => {
+                  await postCheckIn(appointments[0].id);
                   finish();
                 }}
               >
@@ -136,7 +136,7 @@ export default function CheckIn({ profile, location }) {
             </div>
           </div>
         ) : DateTime.now() >
-            DateTime.fromISO(appointments[0].date).plus({ minutes: 10 }) &&
+          DateTime.fromISO(appointments[0].date).plus({ minutes: 10 }) &&
           DateTime.now().hasSame(
             DateTime.fromISO(appointments[0].date),
             "day"
@@ -154,8 +154,8 @@ export default function CheckIn({ profile, location }) {
             <div className={styles["button-container"]}>
               <div
                 className={styles.button}
-                onClick={() => {
-                  postCheckIn(appointments[0].id);
+                onClick={async () => {
+                  await postCheckIn(appointments[0].id);
                   finish();
                 }}
               >
