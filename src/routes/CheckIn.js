@@ -20,19 +20,23 @@ export default function CheckIn({ profile, location }) {
   useEffect(() => {
     async function fetchData() {
       const { future, past } = await getAppointments();
-
-      const appointments = future.filter((a) =>
-        profile.id === "user" ? a.dependent == null : a.dependent === profile.id
-      );
       const pastAppts = past.filter((a) =>
         profile.id === "user" ? a.dependent == null : a.dependent === profile.id
       );
 
+      // Need to find all future appointments and also append past appointments that are within range
+      // of lateness error so they can also be included in result.
+      const appointments =
+        [
+          ...future.filter((a) => profile.id === "user" ? a.dependent == null : a.dependent === profile.id),
+          ...pastAppts.filter((a) => DateTime.fromISO(a.date).plus({ minutes: 10 }).toMillis() >= DateTime.now().toMillis())
+        ];
+
       const missedTodays = pastAppts.find((a) =>
         DateTime.now().hasSame(DateTime.fromISO(a.date), "day") &&
-        DateTime.now().toMillis() > DateTime.fromISO(a.date).toMillis() &&
+        DateTime.now().toMillis() > DateTime.fromISO(a.date).plus({ minutes: 10 }).toMillis() &&
         !a?.checkedin
-      )
+      ) || false
 
       setAppointments(appointments);
       setMissedTodaysAppt(missedTodays)
