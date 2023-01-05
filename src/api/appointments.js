@@ -10,11 +10,11 @@ export function postCancelAppointment(appointmentId) {
   return api.post(`${BASE_URL}/cancel`, { appointmentId });
 }
 
-export function postCreateAppointment({ location, time, dependent = null }) {
+export function postCreateAppointment({ location, time, autoCheckIn = false, dependent = null }) {
   return api.post(`${BASE_URL}/schedule`, {
     location,
     time,
-    autoCheckIn: true,
+    autoCheckIn,
     ...(dependent != null && { dependent }),
   });
 }

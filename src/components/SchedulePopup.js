@@ -16,6 +16,10 @@ export default function SchedulePopup({ location, profile, close, success }) {
   const [timer, setTimer] = useState(null);
   const [seconds, setSeconds] = useState(15);
 
+  function canAutoCheckin(newApptTime) {
+    return Math.abs(DateTime.now().diff(DateTime.fromISO(newApptTime), 'minutes').minutes) <= 20
+  }
+
   function startTimer() {
     setTimer(
       setInterval(() => {
@@ -72,6 +76,7 @@ export default function SchedulePopup({ location, profile, close, success }) {
                 await postCreateAppointment({
                   location: location,
                   time: date,
+                  autoCheckIn: canAutoCheckin(date),
                   ...(profile?.isDependent && { dependent: profile?.id }),
                 });
                 setState("success");
@@ -125,6 +130,17 @@ export default function SchedulePopup({ location, profile, close, success }) {
             <img src={Cheers} alt="cheers" />
           </div>
           <p className={styles["info-text"]}>Appointment Booked!</p>
+          {!canAutoCheckin(date) ? (
+            <p className={styles["info-text"]}>
+              <b>You are too early to check in for your <br /> {DateTime.fromISO(date).toFormat("cccc, LL/dd/yy h:mm a")} appointment.</b><br /><br />
+              <i>Come back to check in between {DateTime.fromISO(date).minus({ minutes: 20 }).toFormat("h:mm a")} and {DateTime.fromISO(date).plus({ minutes: 10 }).toFormat("h:mm a")}</i>
+            </p>
+          ) : (
+            <p className={styles["info-text"]}>
+              You were automatically checked in for your appointment.<br />
+              Help yourself to a complimentary drink, hangout & we will be with you shortly.
+            </p>
+          )}
           <p className={styles["info-text"]}>
             this will close in {seconds} second{seconds === 1 ? "" : "s"}
           </p>
