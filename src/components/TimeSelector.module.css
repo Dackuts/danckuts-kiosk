@@ -58,7 +58,7 @@
   width: 100%;
 }
 
-.date-picker-container > svg {
+.date-picker-container>svg {
   cursor: pointer;
 }
 
@@ -78,6 +78,17 @@
   cursor: pointer;
   -webkit-border-radius: 0.4rem;
   -webkit-tap-highlight-color: #ccecff80;
+}
+
+.no-time-text {
+  text-align: center;
+  font-size: 1rem;
+  margin: 0.25rem 20%;
+  padding: 0.5rem;
+  color: var(--text-color-2);
+  cursor: pointer;
+  border: 2px solid #00000000;
+  border-radius: 0.4rem;
 }
 
 .time-text:hover {
