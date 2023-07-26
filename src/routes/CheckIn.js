@@ -44,7 +44,7 @@ export default function CheckIn({ profile, location }) {
       startTimer();
     }
     fetchData();
-  }, [profile.id]);
+  }, [location, profile.id]);
 
   function startTimer() {
     setTimer(
