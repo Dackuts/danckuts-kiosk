@@ -5,6 +5,7 @@
   padding: 1rem;
   box-sizing: border-box;
   position: relative;
+  touch-action: manipulation;
 }
 
 .location {
