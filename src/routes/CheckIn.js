@@ -30,7 +30,7 @@ export default function CheckIn({ profile, location }) {
         [
           ...future.filter((a) => profile.id === "user" ? a.dependent == null : a.dependent === profile.id),
           ...pastAppts.filter((a) => DateTime.fromISO(a.date).plus({ minutes: 10 }).toMillis() >= DateTime.now().toMillis())
-        ];
+        ].filter((a) => a.location === location);
 
       const missedTodays = pastAppts.find((a) =>
         DateTime.now().hasSame(DateTime.fromISO(a.date), "day") &&
@@ -44,7 +44,7 @@ export default function CheckIn({ profile, location }) {
       startTimer();
     }
     fetchData();
-  }, [profile.id]);
+  }, [location, profile.id]);
 
   function startTimer() {
     setTimer(
