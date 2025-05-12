@@ -66,6 +66,14 @@ export default function CheckIn({ profile, location }) {
     window.location.reload();
   }
 
+  useEffect(() => {
+    if (appointments[0] != null) {
+      if (DateTime.now() > DateTime.fromISO(appointments[0].date).minus({ minutes: 20 })) {
+        postCheckIn(appointments[0].id);
+      }
+    }
+  }, [appointments[0], appointments[0]])
+
   if (!!missedTodaysAppt) {
     return (
       <div>
@@ -162,17 +170,6 @@ export default function CheckIn({ profile, location }) {
               appointment! Help yourself to a complimentary drink, hangout & we
               will be with you shortly.
             </p>
-            <div className={styles["button-container"]}>
-              <div
-                className={styles.button}
-                onClick={async () => {
-                  await postCheckIn(appointments[0].id);
-                  finish();
-                }}
-              >
-                CHECK-IN
-              </div>
-            </div>
           </div>
         ) : DateTime.now() >
           DateTime.fromISO(appointments[0].date).plus({ minutes: 10 }) &&
