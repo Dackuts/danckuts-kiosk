@@ -13,7 +13,7 @@ export default function CheckIn({ profile, location }) {
   const [loading, setLoading] = useState(true);
   const [timer, setTimer] = useState(null);
   const [openScheduler, setOpenScheduler] = useState(false);
-  const [seconds, setSeconds] = useState(15);
+  const [seconds, setSeconds] = useState(8);
   const [appointments, setAppointments] = useState([]);
   const [missedTodaysAppt, setMissedTodaysAppt] = useState(null)
 
@@ -163,7 +163,7 @@ export default function CheckIn({ profile, location }) {
             <div className={styles["image-container"]}>
               <img className={styles.image} src={Cheers} alt="cheers" />
             </div>
-            <p className={styles.name}>Hey {profile.first_name},</p>
+            <p className={styles.name}>Hey {profile.first_name}, you're checked in!</p>
             <p className={styles.message}>
               Welcome to your{" "}
               {DateTime.fromISO(appointments[0].date).toFormat("h:mm a DD")}{" "}
