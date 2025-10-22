@@ -72,7 +72,7 @@ export default function CheckIn({ profile, location }) {
         postCheckIn(appointments[0].id);
       }
     }
-  }, [appointments[0], appointments[0]])
+  }, [appointments[0], appointments])
 
   if (!!missedTodaysAppt) {
     return (
