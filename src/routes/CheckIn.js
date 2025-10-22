@@ -167,7 +167,7 @@ export default function CheckIn({ profile, location }) {
             <p className={styles.message}>
               Welcome to your{" "}
               {DateTime.fromISO(appointments[0].date).toFormat("h:mm a")}{" "}
-              appointment! Grab a free drink, hang out, and we'll be with you shortly.
+              appointment! Grab a free drink, hang out and we'll be with you shortly!
             </p>
           </div>
         ) : DateTime.now() >
