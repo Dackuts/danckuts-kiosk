@@ -68,7 +68,7 @@ export default function CheckIn({ profile, location }) {
 
   useEffect(() => {
     if (appointments[0] != null) {
-      if (DateTime.now() > DateTime.fromISO(appointments[0].date).minus({ minutes: 20 })) {
+      if (DateTime.now() > DateTime.fromISO(appointments[0].date).minus({ minutes: 20 }) && DateTime.now() < DateTime.fromISO(appointments[0].date).plus({ minutes: 10 })) {
         postCheckIn(appointments[0].id);
       }
     }
